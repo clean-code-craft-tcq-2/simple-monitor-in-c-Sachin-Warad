@@ -30,14 +30,14 @@ void testBattery(float testData[], int expectedResult) {
 
 int main() {
   float testData1[] = {25, 70, 0.7};
-  testBattery(testData, 1);
+  testBattery(testData1, 1);
   float testData2[] = {50,85,0.9};
-  testBattery(testData, 0);
+  testBattery(testData2, 0);
   float testData3[] = {46,70,0.7};
-  testBattery(testData, 0);
+  testBattery(testData3, 0);
   float testData4[] = {25,85,0.7};
-  testBattery(testData, 0);
+  testBattery(testData4, 0);
   float testData5[] = {25,70,0.9};
-  testBattery(testData, 0);
+  testBattery(testData5, 0);
   return0;
 }
