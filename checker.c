@@ -50,5 +50,5 @@ int main() {
   //assert(isParametersWithinRange(TempParameter, 25));
   //assert(batteryIsOk(25, 70, 0.7));
   //assert(!batteryIsOk(50, 85, 0));
-  testBattery([25,70,0.7],1);
+  testBattery([25, 70, 0.7], 1);
 }
