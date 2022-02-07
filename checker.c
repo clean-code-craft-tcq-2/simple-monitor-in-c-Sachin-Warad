@@ -1,5 +1,12 @@
 #include <stdio.h>
 #include <assert.h>
+#include "checker.h"
+
+const ParameterInfo parameterInfo [MaxParameter] = {
+  {TempParameter, TemperatureMinLimit, TemperatureMaxLimit, "Temperature"},
+  {SOCParameter, SOCMinLimit, SOCMaxLimit, "State of Charge" },
+  {ChargeRateParameter, ChargeRateMinLimit, ChargeRateMaxLimi, "Charge Rate"}
+};
 
 int batteryIsOk(float temperature, float soc, float chargeRate) {
   if(temperature < 0 || temperature > 45) {
