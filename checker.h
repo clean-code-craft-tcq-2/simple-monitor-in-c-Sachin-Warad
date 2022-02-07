@@ -18,3 +18,7 @@ typedef struct {
   float maxThreshold;
   char msgInput[100];
 } ParameterInfo;
+
+void printOnConsole(char msg[]);
+int isParametersWithinRange (ParameterList parametersName, float inputValue);
+void testBattery(float testData[], int expectedResult);
