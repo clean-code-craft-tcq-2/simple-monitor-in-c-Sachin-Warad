@@ -43,7 +43,7 @@ void testBattery(float testData[], int expectedResult) {
   for(int i=0; i< MaxParameter; i++) {
       result &= isParametersWithinRange(parameterInfo[i].parameterName, testData[i]);
   }
-  assert(result == expectedResult);
+  assert(result == 0);
 }
 
 int main() {
