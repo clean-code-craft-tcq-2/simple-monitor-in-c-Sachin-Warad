@@ -2,6 +2,9 @@
 #include <assert.h>
 #include "checker.h"
 
+void printOnConsole(char msg[]);
+int isParametersWithinRange (ParameterList parametersName, float inputValue);
+
 const ParameterInfo parameterInfo [MaxParameter] = {
   {TempParameter, TemperatureMinLimit, TemperatureMaxLimit, "Temperature"},
   {SOCParameter, SOCMinLimit, SOCMaxLimit, "State of Charge" },
@@ -9,8 +12,8 @@ const ParameterInfo parameterInfo [MaxParameter] = {
 };
 
 int isParametersWithinRange (ParameterList parametersName, float inputValue) {
-  if(inputValue < parameterInfo.minThreshold[parametersName] || inputValue > parameterInfo.maxThreshold[parametersName]) {
-      printOnConsole(parameterInfo.msgInput[parametersName]);
+  if(inputValue < parameterInfo->minThreshold[parametersName] || inputValue > parameterInfo->maxThreshold[parametersName]) {
+      printOnConsole(parameterInfo->msgInput[parametersName]);
       return 0;
   }
   return 1;
