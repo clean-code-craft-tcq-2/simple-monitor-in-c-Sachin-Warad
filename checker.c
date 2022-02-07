@@ -22,6 +22,7 @@ void printOnConsole(char msg[]) {
 }
 
 void testBattery(float testData[], int expectedResult) {
+  int result = 1;
   for(int i=0; i< MaxParameter; i++) {
       result &= isParametersWithinRange(parameterInfo[i].parameterName, testData[i]);
   }
