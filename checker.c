@@ -2,10 +2,6 @@
 #include <assert.h>
 #include "checker.h"
 
-void printOnConsole(char msg[]);
-int isParametersWithinRange (ParameterList parametersName, float inputValue);
-void testBattery(float testData[], int expectedResult);
-
 ParameterInfo parameterInfo [MaxParameter] = {
   {TempParameter, TemperatureMinLimit, TemperatureMaxLimit, "Temperature"},
   {SOCParameter, SOCMinLimit, SOCMaxLimit, "State of Charge" },
@@ -25,32 +21,23 @@ void printOnConsole(char msg[]) {
     printf("%s out of range!\n",msg);
 }
 
-int batteryIsOk(float temperature, float soc, float chargeRate) {
-  if(temperature < 0 || temperature > 45) {
-    printf("Temperature out of range!\n");
-    return 0;
-  } else if(soc < 20 || soc > 80) {
-    printf("State of Charge out of range!\n");
-    return 0;
-  } else if(chargeRate > 0.8) {
-    printf("Charge Rate out of range!\n");
-    return 0;
-  }
-  return 1;
-}
-
 void testBattery(float testData[], int expectedResult) {
-  int result= isParametersWithinRange(parameterInfo[2].parameterName, testData[2]);
-  /*for(int i=0; i< MaxParameter; i++) {
+  for(int i=0; i< MaxParameter; i++) {
       result &= isParametersWithinRange(parameterInfo[i].parameterName, testData[i]);
-  } */
+  }
   assert(result == 1);
 }
 
 int main() {
-  //assert(isParametersWithinRange(TempParameter, 25));
-  //assert(batteryIsOk(25, 70, 0.7));
-  //assert(!batteryIsOk(50, 85, 0));
-  float testData[] = {25, 70, 0.7};
+  float testData1[] = {25, 70, 0.7};
   testBattery(testData, 1);
+  float testData2[] = {50,85,0.9};
+  testBattery(testData, 0);
+  float testData3[] = {46,70,0.7};
+  testBattery(testData, 0);
+  float testData4[] = {25,85,0.7};
+  testBattery(testData, 0);
+  float testData5[] = {25,70,0.9};
+  testBattery(testData, 0);
+  return0;
 }
