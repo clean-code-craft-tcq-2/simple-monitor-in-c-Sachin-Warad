@@ -14,7 +14,7 @@ typedef enum {
 
 typedef struct {
   ParameterList parameterName;
-  int minThreshold;
-  int maxThreshold;
+  float minThreshold;
+  float maxThreshold;
   char msgInput[100];
 } ParameterInfo;
