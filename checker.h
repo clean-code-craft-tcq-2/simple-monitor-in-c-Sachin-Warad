@@ -16,5 +16,5 @@ typedef struct {
   parameterList parameterName,
   int minThreshold,
   int maxThreshold,
-  char msgInput[20]
+  char msgInput[100]
 } parameterInfo;
