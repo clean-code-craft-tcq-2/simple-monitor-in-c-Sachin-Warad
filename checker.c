@@ -13,6 +13,7 @@ ParameterInfo parameterInfo [MaxParameter] = {
 };
 
 int isParametersWithinRange (ParameterList parametersName, float inputValue) {
+  printf("%f,%f,%f",inputValue, parameterInfo[parametersName].minThreshold, parameterInfo[parametersName].maxThreshold);
   if(inputValue < parameterInfo[parametersName].minThreshold || inputValue > parameterInfo[parametersName].maxThreshold) {
       printOnConsole(parameterInfo[parametersName].msgInput);
       return 0;
