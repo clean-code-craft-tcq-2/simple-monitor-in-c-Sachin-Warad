@@ -5,7 +5,7 @@
 void printOnConsole(char msg[]);
 int isParametersWithinRange (ParameterList parametersName, float inputValue);
 
-const ParameterInfo parameterInfo [MaxParameter] = {
+ParameterInfo parameterInfo [MaxParameter] = {
   {TempParameter, TemperatureMinLimit, TemperatureMaxLimit, "Temperature"},
   {SOCParameter, SOCMinLimit, SOCMaxLimit, "State of Charge" },
   {ChargeRateParameter, ChargeRateMinLimit, ChargeRateMaxLimit, "Charge Rate"}
