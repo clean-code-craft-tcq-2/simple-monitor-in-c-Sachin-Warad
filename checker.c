@@ -39,7 +39,7 @@ int batteryIsOk(float temperature, float soc, float chargeRate) {
 }
 
 void testBattery(float testData[], int expectedResult) {
-  int result= isParametersWithinRange(parameterInfo[1].parameterName, testData[1]);
+  int result= isParametersWithinRange(parameterInfo[2].parameterName, testData[2]);
   /*for(int i=0; i< MaxParameter; i++) {
       result &= isParametersWithinRange(parameterInfo[i].parameterName, testData[i]);
   } */
