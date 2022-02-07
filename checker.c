@@ -5,7 +5,7 @@
 const ParameterInfo parameterInfo [MaxParameter] = {
   {TempParameter, TemperatureMinLimit, TemperatureMaxLimit, "Temperature"},
   {SOCParameter, SOCMinLimit, SOCMaxLimit, "State of Charge" },
-  {ChargeRateParameter, ChargeRateMinLimit, ChargeRateMaxLimi, "Charge Rate"}
+  {ChargeRateParameter, ChargeRateMinLimit, ChargeRateMaxLimit, "Charge Rate"}
 };
 
 int batteryIsOk(float temperature, float soc, float chargeRate) {
