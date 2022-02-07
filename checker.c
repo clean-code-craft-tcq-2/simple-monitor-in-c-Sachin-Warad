@@ -12,8 +12,8 @@ const ParameterInfo parameterInfo [MaxParameter] = {
 };
 
 int isParametersWithinRange (ParameterList parametersName, float inputValue) {
-  if(inputValue < parameterInfo->minThreshold[parametersName] || inputValue > parameterInfo->maxThreshold[parametersName]) {
-      printOnConsole(parameterInfo->msgInput[parametersName]);
+  if(inputValue < parameterInfo[parametersName].minThreshold || inputValue > parameterInfo[parametersName].maxThreshold) {
+      printOnConsole(parameterInfo[parametersName].msgInput);
       return 0;
   }
   return 1;
