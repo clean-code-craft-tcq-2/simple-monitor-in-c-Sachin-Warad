@@ -4,6 +4,7 @@
 
 void printOnConsole(char msg[]);
 int isParametersWithinRange (ParameterList parametersName, float inputValue);
+void testBattery(float testData[], int expectedResult);
 
 ParameterInfo parameterInfo [MaxParameter] = {
   {TempParameter, TemperatureMinLimit, TemperatureMaxLimit, "Temperature"},
@@ -37,8 +38,17 @@ int batteryIsOk(float temperature, float soc, float chargeRate) {
   return 1;
 }
 
+void testBattery(float testData[], int expectedResult) {
+  int result=1;
+  for(int i=0; i< MaxParameter; i++) {
+      result &= isParametersWithinRange(parameterInfo[i].parameterName, testData[i]);
+  }
+  assert(result == expectedResult);
+}
+
 int main() {
-  assert(isParametersWithinRange(TempParameter, 25));
+  //assert(isParametersWithinRange(TempParameter, 25));
   //assert(batteryIsOk(25, 70, 0.7));
   //assert(!batteryIsOk(50, 85, 0));
+  testBattery([25,70,0.7],1);
 }
