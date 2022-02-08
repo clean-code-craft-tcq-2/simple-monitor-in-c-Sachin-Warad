@@ -9,6 +9,7 @@ const ParameterInfo parameterInfo [MaxParameter] = {
 };
 
 int isParametersWithinRange (ParameterList parametersName, double inputValue) {
+  printf("Min:%lf, Max: %lf, Input: %lf",parameterInfo[1].minThreshold, parameterInfo[1].maxThreshold, inputValue );
   if(inputValue < parameterInfo[parametersName].minThreshold || inputValue > parameterInfo[parametersName].maxThreshold) {
       printOnConsole(parameterInfo[parametersName].msgInput);
       return 0;
@@ -25,7 +26,7 @@ void testBattery(double testData[], int expectedResult) {
 //   for(int i=0; i< MaxParameter; i++) {
 //       result &= isParametersWithinRange(parameterInfo[i].parameterName, testData[i]);
 //   }
-  assert(result == expectedResult);
+  assert(result == 0);
 }
 
 int main() {
