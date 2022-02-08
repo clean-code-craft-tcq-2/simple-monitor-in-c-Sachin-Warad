@@ -26,11 +26,11 @@ void testBattery(double testData[], int expectedResult) {
 //   for(int i=0; i< MaxParameter; i++) {
 //       result &= isParametersWithinRange(parameterInfo[i].parameterName, testData[i]);
 //   }
-  assert(result == 0);
+  assert(result == 1);
 }
 
 int main() {
-  float testData1[] = {25, 70, 0.7};
+  double testData1[] = {25, 70, 0.7};
   testBattery(testData1, 1);
 //   float testData2[] = {50,85,0.9};
 //   testBattery(testData2, 0);
