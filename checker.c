@@ -8,7 +8,7 @@ const ParameterInfo parameterInfo [MaxParameter] = {
   {ChargeRateParameter, ChargeRateMinLimit, ChargeRateMaxLimit, "Charge Rate"}
 };
 
-int isParametersWithinRange (ParameterList parametersName, float inputValue) {
+int isParametersWithinRange (ParameterList parametersName, double inputValue) {
   if(inputValue < parameterInfo[parametersName].minThreshold || inputValue > parameterInfo[parametersName].maxThreshold) {
       printOnConsole(parameterInfo[parametersName].msgInput);
       return 0;
@@ -20,7 +20,7 @@ void printOnConsole(const char msg[]) {
     printf("%s out of range!\n",msg);
 }
 
-void testBattery(float testData[], int expectedResult) {
+void testBattery(double testData[], int expectedResult) {
   int result = 1;
   for(int i=0; i< MaxParameter; i++) {
       result &= isParametersWithinRange(parameterInfo[i].parameterName, testData[i]);
