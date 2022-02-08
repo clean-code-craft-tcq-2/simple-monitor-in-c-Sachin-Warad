@@ -2,7 +2,7 @@
 #include <assert.h>
 #include "checker.h"
 
-ParameterInfo parameterInfo [MaxParameter] = {
+const ParameterInfo parameterInfo [MaxParameter] = {
   {TempParameter, TemperatureMinLimit, TemperatureMaxLimit, "Temperature"},
   {SOCParameter, SOCMinLimit, SOCMaxLimit, "State of Charge" },
   {ChargeRateParameter, ChargeRateMinLimit, ChargeRateMaxLimit, "Charge Rate"}
@@ -16,7 +16,7 @@ int isParametersWithinRange (ParameterList parametersName, float inputValue) {
   return 1;
 }
 
-void printOnConsole(char msg[]) {
+void printOnConsole(const char msg[]) {
     printf("%s out of range!\n",msg);
 }
 
