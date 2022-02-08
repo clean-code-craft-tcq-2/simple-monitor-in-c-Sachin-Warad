@@ -9,7 +9,6 @@ const ParameterInfo parameterInfo [MaxParameter] = {
 };
 
 int isParametersWithinRange (ParameterList parametersName, double inputValue) {
-  printf("Min:%lf, Max: %lf, Input: %lf",parameterInfo[1].minThreshold, parameterInfo[1].maxThreshold, inputValue );
   if(inputValue < parameterInfo[parametersName].minThreshold || inputValue > parameterInfo[parametersName].maxThreshold) {
       printOnConsole(parameterInfo[parametersName].msgInput);
       return 0;
@@ -22,23 +21,25 @@ void printOnConsole(const char msg[]) {
 }
 
 void testBattery(double testData[], int expectedResult) {
-  int result = isParametersWithinRange(parameterInfo[1].parameterName, testData[1]);
-//   for(int i=0; i< MaxParameter; i++) {
-//       result &= isParametersWithinRange(parameterInfo[i].parameterName, testData[i]);
-//   }
-  assert(result == 1);
+  int result = 1;
+  for(int i=0; i< MaxParameter; i++) {
+      result &= isParametersWithinRange(parameterInfo[i].parameterName, testData[i]);
+  }
+  assert(result == expectedResult);
 }
 
 int main() {
-  double testData1[] = {25, 70, 0.7};
+  double testData1[] = {25,70,0.7};
   testBattery(testData1, 1);
-//   float testData2[] = {50,85,0.9};
-//   testBattery(testData2, 0);
-//   float testData3[] = {46,70,0.7};
-//   testBattery(testData3, 0);
-//   float testData4[] = {25,85,0.7};
-//   testBattery(testData4, 0);
-//   float testData5[] = {25,70,0.9};
-//   testBattery(testData5, 0);
+  double testData2[] = {50,85,0.9};
+  testBattery(testData2, 0);
+  double testData3[] = {46,70,0.7};
+  testBattery(testData3, 0);
+  double testData4[] = {25,85,0.7};
+  testBattery(testData4, 0);
+  double testData5[] = {25,70,0.9};
+  testBattery(testData5, 0);
+  double testData6[] = {-10,70,0.9};
+  testBattery(testData6, 0);
   return 0;
 }
