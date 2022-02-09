@@ -21,7 +21,7 @@ int isParametersWithinRange (const ParameterInfo parameterDetails[], const doubl
   return result;
 }
 
-void printOnConsole(const char msg[]) {
+void printOnConsole(char msg[]) {
     printf("%s out of range!\n",msg);
 }
 
