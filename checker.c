@@ -34,14 +34,14 @@ int main() {
   double testData1[] = {25,70,0.7};
   testBattery(parameterInfo, testData1, 1);
   double testData2[] = {50,85,0.9};
-  testBattery(testData2, 0);
+  testBattery(parameterInfo, testData2, 0);
   double testData3[] = {46,70,0.7};
-  testBattery(testData3, 0);
+  testBattery(parameterInfo, testData3, 0);
   double testData4[] = {25,85,0.7};
-  testBattery(testData4, 0);
+  testBattery(parameterInfo, testData4, 0);
   double testData5[] = {25,70,0.9};
-  testBattery(testData5, 0);
+  testBattery(parameterInfo, testData5, 0);
   double testData6[] = {-10,70,0.9};
-  testBattery(testData6, 0);
+  testBattery(parameterInfo, testData6, 0);
   return 0;
 }
