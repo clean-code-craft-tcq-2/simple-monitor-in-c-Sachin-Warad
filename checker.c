@@ -30,7 +30,7 @@ void testBattery(int isBatteryOK, int expectedResult) {
 }
 
 int main() {
-  void (*Fn_Ptr_WarningMsg)(const char);
+  void (*Fn_Ptr_WarningMsg)(char);
   Fn_Ptr_WarningMsg = &printOnConsole;
   double testData1[] = {25,70,0.7};
   int isBatteryOK = isParametersWithinRange(parameterInfo, testData1, Fn_Ptr_WarningMsg);
