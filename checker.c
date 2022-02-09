@@ -8,7 +8,7 @@ const ParameterInfo parameterInfo [MaxParameter] = {
   {ChargeRateParameter, ChargeRateMinLimit, ChargeRateMaxLimit, "Charge Rate"}
 };
 
-int isParametersWithinRange (const ParameterInfo parameterDetails[], const double testData[], void (*Fn_Ptr_WarningMsg)(const char)) {
+int isParametersWithinRange (const ParameterInfo parameterDetails[], const double testData[], void (*Fn_Ptr_WarningMsg)(char[])) {
   int result = 1;
   for(int i=0; i< MaxParameter; i++) {
       if(testData[i] < parameterDetails[i].minThreshold || testData[i] > parameterDetails[i].maxThreshold) {
@@ -30,7 +30,7 @@ void testBattery(int isBatteryOK, int expectedResult) {
 }
 
 int main() {
-  void (*Fn_Ptr_WarningMsg)(char);
+  void (*Fn_Ptr_WarningMsg)(char[]);
   Fn_Ptr_WarningMsg = &printOnConsole;
   double testData1[] = {25,70,0.7};
   int isBatteryOK = isParametersWithinRange(parameterInfo, testData1, Fn_Ptr_WarningMsg);
