@@ -8,9 +8,9 @@ ParameterInfo parameterInfo [MaxParameter] = {
   {ChargeRateParameter, ChargeRateMinLimit, ChargeRateMaxLimit, "Charge Rate"}
 };
 
-int isParametersWithinRange (int i, ParameterInfo parameterDetails[], double inputValue, void (*Fn_Ptr_WarningMsg)(char[])) {
-  if(inputValue < parameterDetails[i].minThreshold || inputValue > parameterDetails[i].maxThreshold) {
-      Fn_Ptr_WarningMsg(parameterDetails[i].msgInput);
+int isParametersWithinRange (ParameterInfo parameterDetails, double inputValue, void (*Fn_Ptr_WarningMsg)(char[])) {
+  if(inputValue < parameterDetails.minThreshold || inputValue > parameterDetails.maxThreshold) {
+      Fn_Ptr_WarningMsg(parameterDetails.msgInput);
       return 0;
   }
   return 1;
@@ -20,12 +20,12 @@ void printOnConsole(char msg[]) {
     printf("%s out of range!\n",msg);
 }
 
-void testBattery(double parameterDetails[], double testData[], int expectedResult) {
+void testBattery(ParameterInfo parameterDetails[], double testData[], int expectedResult) {
   int result = 1;
   void (*Fn_Ptr_WarningMsg)(char[]);
   Fn_Ptr_WarningMsg = &printOnConsole;
   for(int i=0; i< MaxParameter; i++) {
-      result &= isParametersWithinRange(i, parameterDetails, testData[i], Fn_Ptr_WarningMsg);
+      result &= isParametersWithinRange(parameterDetails[i], testData[i], Fn_Ptr_WarningMsg);
   }
   assert(result == expectedResult);
 }
