@@ -19,8 +19,6 @@ typedef struct {
   char msgInput[100];
 } ParameterInfo;
 
-void printOnConsole(char msg[]);
-int isParametersWithinRange (ParameterInfo parameterDetails[], double testData[], void (*Fn_Ptr_WarningMsg)(char[]));
-void testBattery(int isBatteryOK, int expectedResult);
-//int isParametersWithinRange (ParameterList parametersName, double inputValue);
-//void testBattery(double testData[], int expectedResult);
+void printOnConsole(const char msg[]);
+int isParametersWithinRange (ParameterList parametersName, double inputValue);
+void testBattery(double testData[], int expectedResult);
