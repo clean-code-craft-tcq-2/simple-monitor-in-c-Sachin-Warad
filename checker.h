@@ -31,24 +31,24 @@ typedef struct {
   char msgInput[100];
 } ParameterInfo;
 
-char DEParamInput[MaxParameter][] = {
+char DEParamInput[MaxParameter][50] = {
     "Temperatur",
     "Ladezustand",
     "Ladestrom"
 };
 
-char ENGParamInput[MaxParameter][] = {
+char ENGParamInput[MaxParameter][50] = {
     "Temperature",
     "State of Charge",
     "Charge Rate"
 };
 
-char DEMsgInput[2][] = {
+char DEMsgInput[2][50] = {
     "außer Reichweite",
     "im Warnbereich"
 };
 
-char ENGMsgInput[2][] = {
+char ENGMsgInput[2][50] = {
     "out of range",
     "in warning range"
 };
@@ -57,3 +57,5 @@ void printOnConsole(char msg[]);
 int isParametersWithinRange (ParameterInfo parameterDetails, double inputValue, void (*Fn_Ptr_WarningMsg)(char[]));
 void testBattery(ParameterInfo parameterDetails[], double testData[], int isWarningRequired[], int expectedResult);
 int isParametersWithingWarningRange (ParameterInfo parameterDetails, double inputValue, void (*Fn_Ptr_WarningMsg)(char[]), int isWarningRequired);
+int isParametersWithingWarningRange (ParameterInfo parameterDetails, double inputValue, void (*Fn_Ptr_WarningMsg)(char[]), int isWarningRequired);
+int evaluateWarningRange(ParameterInfo parameterDetails, double inputValue);
