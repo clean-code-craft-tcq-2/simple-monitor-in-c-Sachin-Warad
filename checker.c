@@ -8,6 +8,8 @@ ParameterInfo parameterInfo [MaxParameter] = {
   {ChargeRateParameter, ChargeRateMinLimit, ChargeRateMaxLimit, ChargeRateLowThd, ChargeRateHighThd, "Charge Rate"}
 };
 
+int isParametersWithingWarningRange (ParameterInfo parameterDetails, double inputValue, void (*Fn_Ptr_WarningMsg)(char[]), int isWarningRequired);
+
 int isParametersWithinRange (ParameterInfo parameterDetails, double inputValue, void (*Fn_Ptr_WarningMsg)(char[])) {
   if(inputValue < parameterDetails.minBreachThreshold || inputValue > parameterDetails.maxBreachThreshold) {
       Fn_Ptr_WarningMsg(parameterDetails.msgInput);
@@ -17,12 +19,18 @@ int isParametersWithinRange (ParameterInfo parameterDetails, double inputValue, 
 }
 
 int isParametersWithingWarningRange (ParameterInfo parameterDetails, double inputValue, void (*Fn_Ptr_WarningMsg)(char[]), int isWarningRequired) {
-    int result = 1;
-    if(inputValue <= parameterDetails.minWarningThreshold || inputValue >= parameterDetails.maxWarningThreshold) {
+    if(evaluateWarningRange(parameterDetails, inputValue) && isWarningRequired) {
         Fn_Ptr_WarningMsg(parameterDetails.msgInput);
-        result = 0;
+        return 0;
     }
-    return (result && isWarningRequired);
+    return 1;
+}
+
+int evaluateWarningRange(ParameterInfo parameterDetails, double inputValue) {
+    if(inputValue <= parameterDetails.minWarningThreshold || inputValue >= parameterDetails.maxWarningThreshold) {
+        return 0;
+    }
+    return 1;
 }
 
 void printOnConsole(char msg[]) {
