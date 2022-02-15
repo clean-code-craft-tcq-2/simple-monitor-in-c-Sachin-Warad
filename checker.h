@@ -34,5 +34,5 @@ typedef struct {
 void printOnConsole(char msg[]);
 void testBattery(ParameterInfo parameterDetails[], double testData[], int isWarningRequired[], int expectedResult);
 int isParametersWithinRange (ParameterInfo parameterDetails, double inputValue, void (*Fn_Ptr_WarningMsg)(char[]));
-int isParametersWithingWarningRange (ParameterInfo parameterDetails, double inputValue, void (*Fn_Ptr_WarningMsg)(char[]), int isWarningRequired;
+int isParametersWithingWarningRange (ParameterInfo parameterDetails, double inputValue, void (*Fn_Ptr_WarningMsg)(char[]), int isWarningRequired);
 int evaluateWarningRange(ParameterInfo parameterDetails, double inputValue);
