@@ -12,6 +12,9 @@ int isParametersWithinRange (ParameterInfo parameterDetails, double inputValue, 
   if(inputValue < parameterDetails.minBreachThreshold || inputValue > parameterDetails.maxBreachThreshold) {
       Fn_Ptr_WarningMsg(parameterDetails.msgInput);
       return 0;
+  }else if(inputValue <= parameterDetails.minWarningThreshold || inputValue > parameterDetails.maxWarningThreshold) {
+      Fn_Ptr_WarningMsg(parameterDetails.msgInput);
+      return 0;
   }
   return 1;
 }
