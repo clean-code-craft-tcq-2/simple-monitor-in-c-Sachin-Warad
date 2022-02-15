@@ -3,9 +3,9 @@
 #include "checker.h"
 
 ParameterInfo parameterInfo [MaxParameter] = {
-  {TempParameter, TemperatureMinLimit, TemperatureMaxLimit, "Temperature"},
-  {SOCParameter, SOCMinLimit, SOCMaxLimit, "State of Charge" },
-  {ChargeRateParameter, ChargeRateMinLimit, ChargeRateMaxLimit, "Charge Rate"}
+  {TempParameter, TemperatureMinLimit, TemperatureMaxLimit, TempWarLowThd, TempWarHighThd, "Temperature"},
+  {SOCParameter, SOCMinLimit, SOCMaxLimit, SOCWarLowThd, SOCWarHighThd, "State of Charge" },
+  {ChargeRateParameter, ChargeRateMinLimit, ChargeRateMaxLimit, ChargeRateLowThd, ChargeRateHighThd, "Charge Rate"}
 };
 
 int isParametersWithinRange (ParameterInfo parameterDetails, double inputValue, void (*Fn_Ptr_WarningMsg)(char[])) {
