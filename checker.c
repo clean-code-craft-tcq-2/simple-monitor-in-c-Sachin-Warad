@@ -8,8 +8,6 @@ ParameterInfo parameterInfo [MaxParameter] = {
   {ChargeRateParameter, ChargeRateMinLimit, ChargeRateMaxLimit, ChargeRateLowThd, ChargeRateHighThd, "Charge Rate"}
 };
 
-int isParametersWithingWarningRange (ParameterInfo parameterDetails, double inputValue, void (*Fn_Ptr_WarningMsg)(char[]), int isWarningRequired);
-
 int isParametersWithinRange (ParameterInfo parameterDetails, double inputValue, void (*Fn_Ptr_WarningMsg)(char[])) {
   if(inputValue < parameterDetails.minBreachThreshold || inputValue > parameterDetails.maxBreachThreshold) {
       Fn_Ptr_WarningMsg(parameterDetails.msgInput);
@@ -50,7 +48,7 @@ void testBattery(ParameterInfo parameterDetails[], double testData[], int isWarn
 
 int main() {
   double testData1[] = {25,70,0.7};
-  double warningRequestStatus[] = {1,1,1};
+  int warningRequestStatus[] = {1,1,1};
   testBattery(parameterInfo, testData1, warningRequestStatus, 1);
 //   double testData2[] = {50,85,0.9};
 //   testBattery(parameterInfo, testData2, 0);
