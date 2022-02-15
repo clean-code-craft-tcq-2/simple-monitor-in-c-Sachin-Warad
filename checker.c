@@ -8,6 +8,8 @@ ParameterInfo parameterInfo [MaxParameter] = {
   {ChargeRateParameter, ChargeRateMinLimit, ChargeRateMaxLimit, ChargeRateLowThd, ChargeRateHighThd, "Charge Rate"}
 };
 
+int isParametersWithingWarningRange (ParameterInfo parameterDetails, double inputValue, void (*Fn_Ptr_WarningMsg)(char[]), int isWarningRequired);
+
 int isParametersWithinRange (ParameterInfo parameterDetails, double inputValue, void (*Fn_Ptr_WarningMsg)(char[])) {
   if(inputValue < parameterDetails.minBreachThreshold || inputValue > parameterDetails.maxBreachThreshold) {
       Fn_Ptr_WarningMsg(parameterDetails.msgInput);
@@ -16,7 +18,7 @@ int isParametersWithinRange (ParameterInfo parameterDetails, double inputValue, 
   return 1;
 }
 
-int isParametersWithingWarningRange (ParameterInfo parameterDetails, double inputValue, void (*Fn_Ptr_WarningMsg)(char[]), isWarningRequired) {
+int isParametersWithingWarningRange (ParameterInfo parameterDetails, double inputValue, void (*Fn_Ptr_WarningMsg)(char[]), int isWarningRequired) {
     int result = 1;
     if((inputValue <= parameterDetails.minWarningThreshold || inputValue >= parameterDetails.maxWarningThreshold) && isWarningRequired) {
         Fn_Ptr_WarningMsg(parameterDetails.msgInput);
