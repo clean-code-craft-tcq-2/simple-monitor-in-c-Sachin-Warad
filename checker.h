@@ -4,6 +4,16 @@
 #define SOCMaxLimit 80
 #define ChargeRateMinLimit 0.0
 #define ChargeRateMaxLimit 0.8
+#define ToleranceRate 5
+#define TempToleranceValue (TemperatureMaxLimit*(ToleranceRate/100))
+#define TempWarLowThd (TemperatureMinLimit+TempToleranceValue)
+#define TempWarHighThd (TemperatureMaxLimit-TempToleranceValue)
+#define SOCToleranceValue (SOCMaxLimit*(ToleranceRate/100))
+#define SOCWarLowThd (SOCMinLimit+SOCToleranceValue)
+#define SOCWarHighThd (SOCMaxLimit-SOCToleranceValue)
+#define ChargeRateToleranceValue (ChargeRateMaxLimit*(ToleranceRate/100))
+#define ChargeRateLowThd (ChargeRateMinLimit+ChargeRateToleranceValue)
+#define ChargeRateHighThd (ChargeRateMaxLimit-ChargeRateToleranceValue)
 
 typedef enum {
   TempParameter,
@@ -14,8 +24,10 @@ typedef enum {
 
 typedef struct {
   ParameterList parameterName;
-  double minThreshold;
-  double maxThreshold;
+  double minBreachThreshold;
+  double maxBreachThreshold;
+  double minWarningThreshold;
+  double maxWarningThreshold;
   char msgInput[100];
 } ParameterInfo;
 
