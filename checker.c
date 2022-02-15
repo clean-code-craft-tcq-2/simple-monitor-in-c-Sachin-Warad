@@ -18,11 +18,11 @@ int isParametersWithinRange (ParameterInfo parameterDetails, double inputValue, 
 
 int isParametersWithingWarningRange (ParameterInfo parameterDetails, double inputValue, void (*Fn_Ptr_WarningMsg)(char[]), int isWarningRequired) {
     int result = 1;
-    if((inputValue <= parameterDetails.minWarningThreshold || inputValue >= parameterDetails.maxWarningThreshold) && isWarningRequired) {
+    if(inputValue <= parameterDetails.minWarningThreshold || inputValue >= parameterDetails.maxWarningThreshold) {
         Fn_Ptr_WarningMsg(parameterDetails.msgInput);
         result = 0;
     }
-    return result;
+    return (result && isWarningRequired);
 }
 
 void printOnConsole(char msg[]) {
