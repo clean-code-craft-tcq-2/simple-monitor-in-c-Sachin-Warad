@@ -9,18 +9,18 @@ ParameterInfo parameterInfo [MaxParameter] = {
   {ChargeRateParameter, ChargeRateMinLimit, ChargeRateMaxLimit, ChargeRateLowThd, ChargeRateHighThd, "Charge Rate"}
 };
 
-int isParametersWithinRange (ParameterInfo parameterDetails, double inputValue, void (*Fn_Ptr_WarningMsg)(char[]), char msgInput[]) {
+int isParametersWithinRange (ParameterInfo parameterDetails, double inputValue, void (*Fn_Ptr_WarningMsg)(char[])) {
   if(inputValue < parameterDetails.minBreachThreshold || inputValue > parameterDetails.maxBreachThreshold) {
-      char message = strcat(parameterDetails.paramInput, msgInput);
+      char message = strcat(parameterDetails.paramInput, "out of range");
       Fn_Ptr_WarningMsg(message);
       return 0;
   }
   return 1;
 }
 
-int isParametersWithingWarningRange (ParameterInfo parameterDetails, double inputValue, void (*Fn_Ptr_WarningMsg)(char[]), int isWarningRequired, char msgInput[]) {
+int isParametersWithingWarningRange (ParameterInfo parameterDetails, double inputValue, void (*Fn_Ptr_WarningMsg)(char[]), int isWarningRequired) {
     if(evaluateWarningRange(parameterDetails, inputValue) && isWarningRequired) {
-        char message = strcat(parameterDetails.paramInput, msgInput);
+        char message = strcat(parameterDetails.paramInput, "in warning range");
         Fn_Ptr_WarningMsg(message);
         return 0;
     }
@@ -38,14 +38,14 @@ void printOnConsole(char msg[]) {
     printf("%s out of range!\n",msg);
 }
 
-void testBattery(ParameterInfo parameterDetails[], double testData[], int isWarningRequired[], int expectedResult, char MsgInput[2][]) {
+void testBattery(ParameterInfo parameterDetails[], double testData[], int isWarningRequired[], int expectedResult) {
   int result = 1;
   void (*Fn_Ptr_WarningMsg)(char[]);
   Fn_Ptr_WarningMsg = &printOnConsole;
   
   for(int i=0; i< MaxParameter; i++) {
-      result &= isParametersWithinRange(parameterDetails[i], testData[i], Fn_Ptr_WarningMsg, MsgInput[0][50]) ? 1 : 
-        isParametersWithingWarningRange(parameterDetails[i], testData[i], Fn_Ptr_WarningMsg, isWarningRequired[i], MsgInput[1][50]);
+      result &= isParametersWithinRange(parameterDetails[i], testData[i], Fn_Ptr_WarningMsg) ? 1 : 
+        isParametersWithingWarningRange(parameterDetails[i], testData[i], Fn_Ptr_WarningMsg, isWarningRequired[i]);
   }
   assert(result == expectedResult);
 }
@@ -53,7 +53,7 @@ void testBattery(ParameterInfo parameterDetails[], double testData[], int isWarn
 int main() {
   double testData1[] = {25,70,0.7};
   int warningRequestStatus[] = {1,1,1};
-  testBattery(parameterInfo, testData1, warningRequestStatus, 1, MsgInput[]);
+  testBattery(parameterInfo, testData1, warningRequestStatus, 1);
 //   double testData2[] = {50,85,0.9};
 //   testBattery(parameterInfo, testData2, 0);
 //   double testData3[] = {46,70,0.7};
