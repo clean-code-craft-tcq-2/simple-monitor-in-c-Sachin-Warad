@@ -28,8 +28,10 @@ typedef struct {
   double maxBreachThreshold;
   double minWarningThreshold;
   double maxWarningThreshold;
-  char msgInput[100];
+  char paramInput[100];
 } ParameterInfo;
+
+char MsgInput [2][50] = {"out of range","in warning range"};
 
 void printOnConsole(char msg[]);
 int isParametersWithinRange (ParameterInfo parameterDetails, double inputValue, void (*Fn_Ptr_WarningMsg)(char[]));
