@@ -9,8 +9,6 @@ ParameterInfo parameterInfo [MaxParameter] = {
   {ChargeRateParameter, ChargeRateMinLimit, ChargeRateMaxLimit, ChargeRateLowThd, ChargeRateHighThd, "Charge Rate"}
 };
 
-void formatPrintMsg(char ParamInput[][50], char MsgInput[][50], int LanguageInput);
-
 int isParametersWithinRange (ParameterInfo parameterDetails, double inputValue, void (*Fn_Ptr_WarningMsg)(char[])) {
   if(inputValue < parameterDetails.minBreachThreshold || inputValue > parameterDetails.maxBreachThreshold) {
       Fn_Ptr_WarningMsg(parameterDetails.msgInput);
@@ -38,21 +36,8 @@ void printOnConsole(char msg[]) {
     printf("%s out of range!\n",msg);
 }
 
-void formatPrintMsg(char ParamInput[][50], char MsgInput[][50], int LanguageInput) {
-    if(LanguageInput) {
-        for(int i=0; i<MaxParameter; i++){
-            strcpy(ParamInput[i][50], ENGParamInput[i][50]);
-        }
-        strcpy(MsgInput[0][50], ENGMsgInput[0][50]);
-        strcpy(MsgInput[1][50], ENGMsgInput[1][50]);
-    }
-}
-
 void testBattery(ParameterInfo parameterDetails[], double testData[], int isWarningRequired[], int expectedResult) {
   int result = 1;
-  char ParamInput[MaxParameter][50] = {0};
-  char MsgInput[2][50] = {0};
-  formatPrintMsg(ParamInput, MsgInput,1);
   void (*Fn_Ptr_WarningMsg)(char[]);
   Fn_Ptr_WarningMsg = &printOnConsole;
   
