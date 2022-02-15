@@ -9,7 +9,7 @@ ParameterInfo parameterInfo [MaxParameter] = {
 };
 
 int isParametersWithinRange (ParameterInfo parameterDetails, double inputValue, void (*Fn_Ptr_WarningMsg)(char[])) {
-  if(inputValue < parameterDetails.minThreshold || inputValue > parameterDetails.maxThreshold) {
+  if(inputValue < parameterDetails.minBreachThreshold || inputValue > parameterDetails.maxBreachThreshold) {
       Fn_Ptr_WarningMsg(parameterDetails.msgInput);
       return 0;
   }
