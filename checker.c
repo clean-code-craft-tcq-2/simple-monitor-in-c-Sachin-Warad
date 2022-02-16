@@ -4,7 +4,7 @@
 #include "checker.h"
 
 ParameterInfo parameterInfo [MaxParameter] = {
-  {TempParameter, TemperatureMinLimit, TemperatureMaxLimit, TempWarLowThd, TempWarHighThd, "Temperature"},
+  {TempParameter, TemperatureMinLimit, TemperatureMaxLimit, TempWarLowThd, TempWarHighThd, "Temperature in Celcius"},
   {SOCParameter, SOCMinLimit, SOCMaxLimit, SOCWarLowThd, SOCWarHighThd, "State of Charge" },
   {ChargeRateParameter, ChargeRateMinLimit, ChargeRateMaxLimit, ChargeRateLowThd, ChargeRateHighThd, "Charge Rate"}
 };
@@ -34,14 +34,25 @@ int evaluateWarningRange(ParameterInfo parameterDetails, double inputValue) {
     return 1;
 }
 
+void convertFarenheitToCelcius(double testData[]) {
+    testData[0] = ((testData[0]-32)*5/9);
+}
+
+void convertTemperatureToCelcius(char* temperatureUnit, double testData[]) {
+    if(!strcmp(temperatureUnit,"F")) {
+        convertFarenheitToCelcius(testdata);
+    }
+}
+
 void printOnConsole(char msg[]) {
     printf("%s out of range!\n",msg);
 }
 
-void testBattery(ParameterInfo parameterDetails[], double testData[], int isWarningRequired[], int expectedResult) {
+void testBattery(ParameterInfo parameterDetails[], double testData[], int isWarningRequired[], int expectedResult, char temperatureUnit) {
   int result = 1;
   void (*Fn_Ptr_WarningMsg)(char[]);
   Fn_Ptr_WarningMsg = &printOnConsole;
+  convertTemperatureToCelcius(temperatureUnit, testData);
   
   for(int i=0; i< MaxParameter; i++) {
       result &= isParametersWithinRange(parameterDetails[i], testData[i], Fn_Ptr_WarningMsg) ? 1 : 
@@ -53,7 +64,7 @@ void testBattery(ParameterInfo parameterDetails[], double testData[], int isWarn
 int main() {
   double testData1[] = {25,70,0.7};
   int warningRequestStatus[] = {1,1,1};
-  testBattery(parameterInfo, testData1, warningRequestStatus, 1);
+  testBattery(parameterInfo, testData1, warningRequestStatus, 1, "C");
 //   double testData2[] = {50,85,0.9};
 //   testBattery(parameterInfo, testData2, 0);
 //   double testData3[] = {46,70,0.7};
