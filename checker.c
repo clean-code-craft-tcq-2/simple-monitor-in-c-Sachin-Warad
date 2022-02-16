@@ -40,7 +40,7 @@ void convertFarenheitToCelcius(double testData[]) {
 
 void convertTemperatureToCelcius(char* temperatureUnit, double testData[]) {
     if(!strcmp(temperatureUnit,"F")) {
-        convertFarenheitToCelcius(testdata);
+        convertFarenheitToCelcius(testData);
     }
 }
 
