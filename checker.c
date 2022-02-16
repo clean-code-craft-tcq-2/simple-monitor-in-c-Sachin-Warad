@@ -48,7 +48,7 @@ void printOnConsole(char msg[]) {
     printf("%s out of range!\n",msg);
 }
 
-void testBattery(ParameterInfo parameterDetails[], double testData[], int isWarningRequired[], int expectedResult, char temperatureUnit) {
+void testBattery(ParameterInfo parameterDetails[], double testData[], int isWarningRequired[], int expectedResult, char* temperatureUnit) {
   int result = 1;
   void (*Fn_Ptr_WarningMsg)(char[]);
   Fn_Ptr_WarningMsg = &printOnConsole;
