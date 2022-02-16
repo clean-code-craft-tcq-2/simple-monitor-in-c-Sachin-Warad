@@ -69,7 +69,7 @@ void testBattery(ParameterInfo parameterDetails[], double testData[], int isWarn
 int main() {
   double testData1[] = {10,70,0.7};
   int warningRequestStatus[] = {1,1,1};
-  testBattery(parameterInfo, testData1, warningRequestStatus, 0, "C");
+  testBattery(parameterInfo, testData1, warningRequestStatus, 1, "C");
 //   double testData2[] = {50,85,0.9};
 //   testBattery(parameterInfo, testData2, 0);
 //   double testData3[] = {46,70,0.7};
