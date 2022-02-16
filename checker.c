@@ -54,7 +54,7 @@ void testBattery(ParameterInfo parameterDetails[], double testData[], int isWarn
   Fn_Ptr_WarningMsg = &printOnConsole;
   convertTemperatureToCelcius(temperatureUnit, testData);
   
-  printf(parameterDetails[0].minBreachThreshold, parameterDetails[0].maxBreachThreshold, parameterDetails[0].minWarningThreshold, parameterDetails[0].maxWarningThreshold,
+  printf("%lf,%lf,%lf,%lf,%lf,%lf,%lf,%lf,%lf,%lf,%lf,%lf,%lf,%lf,%lf",parameterDetails[0].minBreachThreshold, parameterDetails[0].maxBreachThreshold, parameterDetails[0].minWarningThreshold, parameterDetails[0].maxWarningThreshold,
         parameterDetails[1].minBreachThreshold, parameterDetails[1].maxBreachThreshold, parameterDetails[1].minWarningThreshold, parameterDetails[1].maxWarningThreshold,
         parameterDetails[2].minBreachThreshold, parameterDetails[2].maxBreachThreshold, parameterDetails[2].minWarningThreshold, parameterDetails[2].maxWarningThreshold,
         testData[0], testData[1], testData[2]);
