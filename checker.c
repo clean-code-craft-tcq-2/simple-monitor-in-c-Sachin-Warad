@@ -20,7 +20,7 @@ int isParametersWithinRange (ParameterInfo parameterDetails, double inputValue, 
 
 int isParametersWithingWarningRange (ParameterInfo parameterDetails, double inputValue, void (*Fn_Ptr_WarningMsg)(char[]), int isWarningRequired) {
     if(evaluateWarningRange(parameterDetails, inputValue) && isWarningRequired) {
-        char message = strcat(parameterDetails.paramInput, "in warning range");
+        char *message = strcat(parameterDetails.paramInput, "in warning range");
         Fn_Ptr_WarningMsg(message);
         return 0;
     }
@@ -45,7 +45,7 @@ void convertTemperatureToCelcius(char* temperatureUnit, double testData[]) {
 }
 
 void printOnConsole(char msg[]) {
-    printf("%s out of range!\n",msg);
+    printf(msg);
 }
 
 void testBattery(ParameterInfo parameterDetails[], double testData[], int isWarningRequired[], int expectedResult, char* temperatureUnit) {
